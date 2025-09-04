@@ -9,7 +9,10 @@ keywords: "Adam Oentoro, AI, Machine Learning, Portfolio, Research"
 <section id="home" class="hero">
     <div class="hero-content">
         <div class="hero-text">
-            <h1 class="hero-title">{{ site.title }}</h1>
+            <h1 class="hero-title">
+                <span class="greeting">Hello, I'm</span>
+                <span class="name">Adam Oentoro</span>
+            </h1>
             <p class="hero-subtitle">{{ site.description }}</p>
             <div class="hero-buttons">
                 <a href="#projects" class="btn btn-primary">View My Work</a>

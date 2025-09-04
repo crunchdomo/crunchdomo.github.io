@@ -6,8 +6,8 @@
         </a>
         
         <ul class="nav-menu" id="nav-menu">
-            {% assign nav_items = "Home,About,Projects,Experience,Blog,Contact" | split: "," %}
-            {% assign nav_links = "/#home,/#about,/#projects,/#experience,/blog,/#contact" | split: "," %}
+            {% assign nav_items = "Home,About,Projects,Experience,Blog,Stats,Contact" | split: "," %}
+            {% assign nav_links = "/#home,/#about,/#projects,/#experience,/blog,/stats,/#contact" | split: "," %}
             
             {% for item in nav_items %}
                 {% assign index = forloop.index0 %}
@@ -23,12 +23,8 @@
                     {% endif %}
                     
                     <a href="{{ link | relative_url }}" 
-                       class="nav-link{% if current_page %} active{% endif %}"
-                       {% if item == "Blog" %}aria-describedby="blog-posts-count"{% endif %}>
+                       class="nav-link{% if current_page %} active{% endif %}">
                         {{ item }}
-                        {% if item == "Blog" and site.posts.size > 0 %}
-                            <span class="nav-badge" id="blog-posts-count">{{ site.posts.size }}</span>
-                        {% endif %}
                     </a>
                 </li>
             {% endfor %}
