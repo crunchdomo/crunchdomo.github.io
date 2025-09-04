@@ -12,7 +12,7 @@
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="Blog | Adam Oentoro">
     <meta property="og:description" content="Thoughts on AI, machine learning, reinforcement learning, and my journey in tech">
-    <meta property="og:url" content="https://crunchdomo.github.io/blog.html">
+    <meta property="og:url" content="http://localhost:4000/blog.html">
     <meta property="og:site_name" content="Adam Oentoro">
     <meta property="og:type" content="website">
     
@@ -35,7 +35,7 @@
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     
     <!-- Jekyll Plugins -->
-    <link type="application/atom+xml" rel="alternate" href="https://crunchdomo.github.io/feed.xml" title="Adam Oentoro" />
+    <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Adam Oentoro" />
     <!-- Begin Jekyll SEO tag v2.8.0 -->
 <title>Blog | Adam Oentoro</title>
 <meta name="generator" content="Jekyll v3.10.0" />
@@ -44,14 +44,14 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Thoughts on AI, machine learning, reinforcement learning, and my journey in tech" />
 <meta property="og:description" content="Thoughts on AI, machine learning, reinforcement learning, and my journey in tech" />
-<link rel="canonical" href="https://crunchdomo.github.io/blog.html" />
-<meta property="og:url" content="https://crunchdomo.github.io/blog.html" />
+<link rel="canonical" href="http://localhost:4000/blog.html" />
+<meta property="og:url" content="http://localhost:4000/blog.html" />
 <meta property="og:site_name" content="Adam Oentoro" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Blog" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Adam Oentoro"},"description":"Thoughts on AI, machine learning, reinforcement learning, and my journey in tech","headline":"Blog","url":"https://crunchdomo.github.io/blog.html"}</script>
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Adam Oentoro"},"description":"Thoughts on AI, machine learning, reinforcement learning, and my journey in tech","headline":"Blog","url":"http://localhost:4000/blog.html"}</script>
 <!-- End Jekyll SEO tag -->
 
     
@@ -233,40 +233,117 @@ document.addEventListener('DOMContentLoaded', function() {
             </div>
         </header>
         
-        <!-- Categories Filter -->
+        <!-- Multi-Select Topic Filters -->
         
         <div class="blog-filters">
-            <h3>Filter by Category:</h3>
-            <div class="category-tags">
-                <a href="/blog" class="category-tag active" data-category="all">
-                    All (3)
-                </a>
+            <div class="filter-header">
+                <span class="filter-label">Filter by Topics:</span>
+                <button id="clear-filters" class="clear-filters-btn" style="display: none;">Clear All</button>
+            </div>
+            
+            <div class="multi-select-container">
+                <button id="filter-dropdown-btn" class="filter-dropdown-btn">
+                    <span id="filter-btn-text">Select Topics</span>
+                    <svg class="dropdown-arrow" width="12" height="8" viewBox="0 0 12 8" fill="none">
+                        <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
                 
-                <a href="/blog/category/research" 
-                   class="category-tag" data-category="research">
-                    Research (1)
-                </a>
-                
-                <a href="/blog/category/robotics" 
-                   class="category-tag" data-category="robotics">
-                    Robotics (1)
-                </a>
-                
-                <a href="/blog/category/technical" 
-                   class="category-tag" data-category="technical">
-                    Technical (1)
-                </a>
-                
-                <a href="/blog/category/cuda" 
-                   class="category-tag" data-category="cuda">
-                    CUDA (1)
-                </a>
-                
-                <a href="/blog/category/general" 
-                   class="category-tag" data-category="general">
-                    General (1)
-                </a>
-                
+                <div id="filter-dropdown-menu" class="filter-dropdown-menu">
+                    <div class="filter-options">
+                        <!-- Categories -->
+                        
+                        
+                        <label class="filter-option">
+                            <input type="checkbox" class="filter-checkbox" value="cuda" data-type="category">
+                            <span class="checkbox-custom"></span>
+                            <span class="filter-text">CUDA</span>
+                        </label>
+                        
+                        <label class="filter-option">
+                            <input type="checkbox" class="filter-checkbox" value="general" data-type="category">
+                            <span class="checkbox-custom"></span>
+                            <span class="filter-text">General</span>
+                        </label>
+                        
+                        <label class="filter-option">
+                            <input type="checkbox" class="filter-checkbox" value="research" data-type="category">
+                            <span class="checkbox-custom"></span>
+                            <span class="filter-text">Research</span>
+                        </label>
+                        
+                        <label class="filter-option">
+                            <input type="checkbox" class="filter-checkbox" value="robotics" data-type="category">
+                            <span class="checkbox-custom"></span>
+                            <span class="filter-text">Robotics</span>
+                        </label>
+                        
+                        <label class="filter-option">
+                            <input type="checkbox" class="filter-checkbox" value="technical" data-type="category">
+                            <span class="checkbox-custom"></span>
+                            <span class="filter-text">Technical</span>
+                        </label>
+                        
+                        
+                        <!-- Unique Tags (excluding categories) -->
+                        
+                        
+                        
+                        
+                        
+                        <div class="filter-separator"></div>
+                        
+                        <label class="filter-option">
+                            <input type="checkbox" class="filter-checkbox" value="deep learning" data-type="tag">
+                            <span class="checkbox-custom"></span>
+                            <span class="filter-text">Deep Learning</span>
+                        </label>
+                        
+                        <label class="filter-option">
+                            <input type="checkbox" class="filter-checkbox" value="gpu" data-type="tag">
+                            <span class="checkbox-custom"></span>
+                            <span class="filter-text">GPU</span>
+                        </label>
+                        
+                        <label class="filter-option">
+                            <input type="checkbox" class="filter-checkbox" value="optimization" data-type="tag">
+                            <span class="checkbox-custom"></span>
+                            <span class="filter-text">Optimization</span>
+                        </label>
+                        
+                        <label class="filter-option">
+                            <input type="checkbox" class="filter-checkbox" value="pytorch" data-type="tag">
+                            <span class="checkbox-custom"></span>
+                            <span class="filter-text">PyTorch</span>
+                        </label>
+                        
+                        <label class="filter-option">
+                            <input type="checkbox" class="filter-checkbox" value="reinforcement learning" data-type="tag">
+                            <span class="checkbox-custom"></span>
+                            <span class="filter-text">Reinforcement Learning</span>
+                        </label>
+                        
+                        <label class="filter-option">
+                            <input type="checkbox" class="filter-checkbox" value="simulation" data-type="tag">
+                            <span class="checkbox-custom"></span>
+                            <span class="filter-text">Simulation</span>
+                        </label>
+                        
+                        <label class="filter-option">
+                            <input type="checkbox" class="filter-checkbox" value="transfer learning" data-type="tag">
+                            <span class="checkbox-custom"></span>
+                            <span class="filter-text">Transfer Learning</span>
+                        </label>
+                        
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Active Filters Display -->
+            <div id="active-filters" class="active-filters" style="display: none;">
+                <span class="active-filters-label">Active filters:</span>
+                <div id="active-filters-list" class="active-filters-list"></div>
             </div>
         </div>
         
@@ -428,6 +505,243 @@ document.addEventListener('DOMContentLoaded', function() {
         </aside>
     </div>
 </section>
+
+<script>
+// Multi-select blog topic filter functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const dropdownBtn = document.getElementById('filter-dropdown-btn');
+    const dropdownMenu = document.getElementById('filter-dropdown-menu');
+    const filterCheckboxes = document.querySelectorAll('.filter-checkbox');
+    const clearFiltersBtn = document.getElementById('clear-filters');
+    const activeFiltersDiv = document.getElementById('active-filters');
+    const activeFiltersList = document.getElementById('active-filters-list');
+    const filterBtnText = document.getElementById('filter-btn-text');
+    const postsContainer = document.getElementById('posts-container');
+    const blogStats = document.querySelector('.blog-stats');
+    
+    if (!dropdownBtn || !postsContainer) return;
+    
+    // Get all post cards and store original stats
+    const allPosts = Array.from(postsContainer.querySelectorAll('.post-card'));
+    const totalPosts = allPosts.length;
+    const originalStats = blogStats.innerHTML;
+    
+    let activeFilters = [];
+    
+    // Toggle dropdown menu
+    dropdownBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        const isOpen = dropdownMenu.classList.contains('open');
+        
+        if (isOpen) {
+            closeDropdown();
+        } else {
+            openDropdown();
+        }
+    });
+    
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function(e) {
+        if (!dropdownBtn.contains(e.target) && !dropdownMenu.contains(e.target)) {
+            closeDropdown();
+        }
+    });
+    
+    function openDropdown() {
+        dropdownMenu.classList.add('open');
+        dropdownBtn.classList.add('active');
+    }
+    
+    function closeDropdown() {
+        dropdownMenu.classList.remove('open');
+        dropdownBtn.classList.remove('active');
+    }
+    
+    // Handle checkbox changes
+    filterCheckboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', function() {
+            const value = this.value;
+            
+            if (this.checked) {
+                if (!activeFilters.includes(value)) {
+                    activeFilters.push(value);
+                }
+            } else {
+                activeFilters = activeFilters.filter(filter => filter !== value);
+            }
+            
+            updateFilters();
+        });
+    });
+    
+    // Clear all filters
+    clearFiltersBtn.addEventListener('click', function() {
+        activeFilters = [];
+        filterCheckboxes.forEach(checkbox => {
+            checkbox.checked = false;
+        });
+        updateFilters();
+        closeDropdown();
+    });
+    
+    function updateFilters() {
+        updateButtonText();
+        updateActiveFiltersDisplay();
+        filterPosts();
+        updateStats();
+        updateClearButton();
+    }
+    
+    function updateButtonText() {
+        if (activeFilters.length === 0) {
+            filterBtnText.textContent = 'Select Topics';
+        } else if (activeFilters.length === 1) {
+            const filterName = formatFilterName(activeFilters[0]);
+            filterBtnText.textContent = filterName;
+        } else {
+            filterBtnText.textContent = `${activeFilters.length} topics selected`;
+        }
+    }
+    
+    function updateActiveFiltersDisplay() {
+        if (activeFilters.length === 0) {
+            activeFiltersDiv.style.display = 'none';
+            activeFiltersList.innerHTML = '';
+        } else {
+            activeFiltersDiv.style.display = 'block';
+            
+            activeFiltersList.innerHTML = activeFilters.map(filter => {
+                const filterName = formatFilterName(filter);
+                return `
+                    <span class="active-filter-tag">
+                        ${filterName}
+                        <button class="remove-filter" data-filter="${filter}">×</button>
+                    </span>
+                `;
+            }).join('');
+            
+            // Add event listeners for remove buttons
+            activeFiltersList.querySelectorAll('.remove-filter').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const filterToRemove = this.getAttribute('data-filter');
+                    
+                    // Uncheck the corresponding checkbox
+                    const checkbox = document.querySelector(`input[value="${filterToRemove}"]`);
+                    if (checkbox) checkbox.checked = false;
+                    
+                    // Remove from active filters
+                    activeFilters = activeFilters.filter(filter => filter !== filterToRemove);
+                    updateFilters();
+                });
+            });
+        }
+    }
+    
+    function formatFilterName(filter) {
+        return filter.split(' ').map(word => 
+            word.charAt(0).toUpperCase() + word.slice(1)
+        ).join(' ');
+    }
+    
+    function filterPosts() {
+        allPosts.forEach(post => {
+            if (activeFilters.length === 0) {
+                // Show all posts
+                post.style.display = 'block';
+                post.style.animation = 'fadeIn 0.3s ease-in';
+            } else {
+                // Check if post matches any active filter
+                let shouldShow = false;
+                
+                const postCategory = post.querySelector('.post-category');
+                const postTags = post.querySelectorAll('.tag');
+                
+                activeFilters.forEach(filter => {
+                    // Check category
+                    if (postCategory && postCategory.textContent.toLowerCase() === filter) {
+                        shouldShow = true;
+                    }
+                    
+                    // Check tags
+                    postTags.forEach(tag => {
+                        if (tag.textContent.toLowerCase() === filter) {
+                            shouldShow = true;
+                        }
+                    });
+                });
+                
+                if (shouldShow) {
+                    post.style.display = 'block';
+                    post.style.animation = 'fadeIn 0.3s ease-in';
+                } else {
+                    post.style.display = 'none';
+                }
+            }
+        });
+    }
+    
+    function updateStats() {
+        const visiblePosts = allPosts.filter(post => post.style.display !== 'none');
+        const visibleCount = visiblePosts.length;
+        
+        // Calculate total words for filtered posts
+        let totalWords = 0;
+        visiblePosts.forEach(post => {
+            const excerpt = post.querySelector('.post-excerpt');
+            if (excerpt) {
+                const excerptLength = excerpt.textContent.length;
+                const estimatedWords = Math.round(excerptLength * 8);
+                totalWords += estimatedWords;
+            }
+        });
+        
+        const wordsDisplay = totalWords > 1000 ? `~${Math.round(totalWords/1000)}k` : totalWords;
+        
+        if (activeFilters.length === 0) {
+            blogStats.innerHTML = originalStats;
+        } else {
+            const filtersText = activeFilters.length === 1 ? 
+                formatFilterName(activeFilters[0]) : 
+                `${activeFilters.length} topics`;
+            
+            blogStats.innerHTML = `
+                <span class="stat">${visibleCount} Posts</span>
+                <span class="stat">Filtered by: ${filtersText}</span>
+                <span class="stat">${wordsDisplay} Words</span>
+            `;
+        }
+        
+        // Add animation to posts container
+        postsContainer.style.opacity = '0.7';
+        setTimeout(() => {
+            postsContainer.style.opacity = '1';
+        }, 150);
+    }
+    
+    function updateClearButton() {
+        if (activeFilters.length > 0) {
+            clearFiltersBtn.style.display = 'inline-block';
+        } else {
+            clearFiltersBtn.style.display = 'none';
+        }
+    }
+});
+
+// Add CSS animation for fade in effect
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .blog-grid {
+        transition: opacity 0.3s ease;
+    }
+`;
+document.head.appendChild(style);
+</script>
     
     <!-- Footer -->
 <footer class="footer">
