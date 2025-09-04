@@ -19,11 +19,6 @@ keywords: "Adam Oentoro, AI, Machine Learning, Portfolio, Research"
                 <a href="{{ '/blog' | relative_url }}" class="btn btn-outline">Read My Blog</a>
             </div>
         </div>
-        <div class="hero-image">
-            <div class="hero-avatar">
-                <img src="{{ '/assets/images/profile.jpg' | relative_url }}" alt="{{ site.author.name }}" onerror="this.style.display='none'">
-            </div>
-        </div>
     </div>
 </section>
 
