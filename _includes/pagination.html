@@ -1,0 +1,37 @@
+<!-- Pagination component -->
+{% if paginator.total_pages > 1 %}
+<nav class="pagination" aria-label="Blog pagination">
+    <div class="pagination-info">
+        Page {{ paginator.page }} of {{ paginator.total_pages }}
+        ({{ paginator.total_posts }} total posts)
+    </div>
+    
+    <div class="pagination-links">
+        {% if paginator.previous_page %}
+            <a href="{{ paginator.previous_page_path | relative_url }}" class="pagination-link pagination-prev" rel="prev">
+                ← Previous
+            </a>
+        {% else %}
+            <span class="pagination-link pagination-prev disabled">← Previous</span>
+        {% endif %}
+
+        {% for page in (1..paginator.total_pages) %}
+            {% if page == paginator.page %}
+                <span class="pagination-link pagination-current">{{ page }}</span>
+            {% elsif page == 1 %}
+                <a href="{{ '/blog/' | relative_url }}" class="pagination-link">{{ page }}</a>
+            {% else %}
+                <a href="{{ site.paginate_path | replace: ':num', page | relative_url }}" class="pagination-link">{{ page }}</a>
+            {% endif %}
+        {% endfor %}
+
+        {% if paginator.next_page %}
+            <a href="{{ paginator.next_page_path | relative_url }}" class="pagination-link pagination-next" rel="next">
+                Next →
+            </a>
+        {% else %}
+            <span class="pagination-link pagination-next disabled">Next →</span>
+        {% endif %}
+    </div>
+</nav>
+{% endif %}

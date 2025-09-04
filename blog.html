@@ -1,0 +1,91 @@
+---
+layout: default
+title: Blog
+description: "Thoughts on AI, machine learning, reinforcement learning, and my journey in tech"
+keywords: "Adam Oentoro blog, AI blog, machine learning, research, technical writing"
+paginate: true
+---
+
+<section class="blog-section">
+    <div class="container">
+        <header class="blog-header">
+            <h1 class="section-title">Blog</h1>
+            <p class="blog-description">
+                {{ page.description }}
+            </p>
+            
+            <!-- Blog Stats -->
+            <div class="blog-stats">
+                <span class="stat">{{ site.posts.size }} Posts</span>
+                {% assign categories = site.categories | sort %}
+                <span class="stat">{{ categories.size }} Categories</span>
+                {% assign total_words = 0 %}
+                {% for post in site.posts %}
+                    {% assign post_words = post.content | number_of_words %}
+                    {% assign total_words = total_words | plus: post_words %}
+                {% endfor %}
+                <span class="stat">~{{ total_words | divided_by: 1000 }}k Words</span>
+            </div>
+        </header>
+        
+        <!-- Categories Filter -->
+        {% if site.categories.size > 0 %}
+        <div class="blog-filters">
+            <h3>Filter by Category:</h3>
+            <div class="category-tags">
+                <a href="{{ '/blog' | relative_url }}" class="category-tag active" data-category="all">
+                    All ({{ site.posts.size }})
+                </a>
+                {% for category in site.categories %}
+                <a href="{{ '/blog/category/' | append: category[0] | downcase | relative_url }}" 
+                   class="category-tag" data-category="{{ category[0] | downcase }}">
+                    {{ category[0] }} ({{ category[1].size }})
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+        
+        <!-- Posts Grid -->
+        <div class="blog-grid" id="posts-container">
+            {% if paginator %}
+                {% for post in paginator.posts %}
+                    {% include post-card.html post=post %}
+                {% endfor %}
+            {% else %}
+                {% for post in site.posts %}
+                    {% include post-card.html post=post %}
+                {% endfor %}
+            {% endif %}
+        </div>
+        
+        <!-- Pagination -->
+        {% if paginator %}
+            {% include pagination.html %}
+        {% endif %}
+        
+        <!-- Empty State -->
+        {% if site.posts.size == 0 %}
+        <div class="no-posts">
+            <h3>No posts yet</h3>
+            <p>I'm working on some great content. Check back soon!</p>
+            <a href="{{ '/' | relative_url }}" class="btn btn-primary">Back to Home</a>
+        </div>
+        {% endif %}
+        
+        <!-- Newsletter Signup -->
+        <aside class="blog-newsletter">
+            <div class="newsletter-content">
+                <h3>Stay Updated</h3>
+                <p>Get notified when I publish new posts about AI, machine learning, and research insights.</p>
+                <form class="newsletter-form" action="#" method="post">
+                    <input type="email" placeholder="your@email.com" required>
+                    <button type="submit" class="btn btn-primary">Subscribe</button>
+                </form>
+                <p class="newsletter-disclaimer">
+                    <small>No spam, unsubscribe at any time. I respect your privacy.</small>
+                </p>
+            </div>
+        </aside>
+    </div>
+</section>

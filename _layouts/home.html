@@ -1,0 +1,37 @@
+---
+layout: default
+---
+
+<main class="home-content">
+    {{ content }}
+</main>
+
+{% if site.posts.size > 0 %}
+<section class="recent-posts">
+    <div class="container">
+        <h2 class="section-title">Latest Blog Posts</h2>
+        <div class="posts-grid">
+            {% for post in site.posts limit:3 %}
+            <article class="post-card">
+                <div class="post-card-header">
+                    <span class="post-date">{{ post.date | date: "%b %d, %Y" }}</span>
+                    {% if post.categories.size > 0 %}
+                    <span class="post-category">{{ post.categories.first }}</span>
+                    {% endif %}
+                </div>
+                <h3 class="post-title">
+                    <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+                </h3>
+                <p class="post-excerpt">
+                    {{ post.excerpt | strip_html | truncate: 120 }}
+                </p>
+                <a href="{{ post.url | relative_url }}" class="read-more">Read more</a>
+            </article>
+            {% endfor %}
+        </div>
+        <div class="posts-footer">
+            <a href="{{ '/blog' | relative_url }}" class="btn btn-primary">View All Posts</a>
+        </div>
+    </div>
+</section>
+{% endif %}

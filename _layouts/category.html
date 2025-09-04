@@ -1,0 +1,51 @@
+---
+layout: default
+---
+
+<section class="category-section">
+    <div class="container">
+        <header class="category-header">
+            <nav class="breadcrumb">
+                <a href="{{ '/' | relative_url }}">Home</a> › 
+                <a href="{{ '/blog' | relative_url }}">Blog</a> › 
+                <span>{{ page.category | capitalize }}</span>
+            </nav>
+            
+            <h1 class="category-title">{{ page.category | capitalize }}</h1>
+            {% if page.description %}
+            <p class="category-description">{{ page.description }}</p>
+            {% endif %}
+            
+            {% assign category_posts = site.categories[page.category] %}
+            <div class="category-stats">
+                <span class="stat">{{ category_posts.size }} Posts</span>
+                {% assign category_words = 0 %}
+                {% for post in category_posts %}
+                    {% assign category_words = category_words | plus: post.content | number_of_words %}
+                {% endfor %}
+                <span class="stat">~{{ category_words | divided_by: 1000 }}k Words</span>
+            </div>
+        </header>
+        
+        <!-- Posts in Category -->
+        <div class="category-posts">
+            {% for post in category_posts %}
+                {% include post-card.html post=post %}
+            {% endfor %}
+        </div>
+        
+        <!-- Other Categories -->
+        <aside class="related-categories">
+            <h3>Other Categories</h3>
+            <div class="category-tags">
+                {% for category in site.categories %}
+                    {% unless category[0] == page.category %}
+                    <a href="{{ '/blog/category/' | append: category[0] | downcase | relative_url }}" class="category-tag">
+                        {{ category[0] }} ({{ category[1].size }})
+                    </a>
+                    {% endunless %}
+                {% endfor %}
+            </div>
+        </aside>
+    </div>
+</section>

@@ -1,0 +1,66 @@
+# Jekyll Configuration
+title: Adam Oentoro
+email: oentorofadam@gmail.com
+description: >- 
+  AI Researcher & Machine Learning Engineer with expertise in reinforcement learning,
+  knowledge-augmented AI systems, and GPU computing. Recently completed MSc in AI from
+  Vrije Universiteit Amsterdam.
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://crunchdomo.github.io" # your site's URL
+twitter_username: 
+github_username: crunchdomo
+linkedin_username: adam-oentoro-15950a1b2
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+theme: null # We're using custom styling
+
+# GitHub Pages supported plugins only
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# Collections
+collections:
+  posts:
+    output: true
+    permalink: /blog/:year/:month/:day/:title/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      author: "Adam Oentoro"
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - README.md
+  - CLAUDE.md
+
+# Pagination (if you want to add it later)
+# paginate: 5
+# paginate_path: "/blog/page:num/"
+
+# SEO
+author:
+  name: Adam Oentoro
+  email: oentorofadam@gmail.com
+
+# Social links for SEO
+social:
+  name: Adam Oentoro
+  links:
+    - https://www.linkedin.com/in/adam-oentoro-15950a1b2/
+    - https://github.com/crunchdomo

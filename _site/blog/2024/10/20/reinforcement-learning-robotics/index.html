@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Exploring the challenges and solutions in applying reinforcement learning algorithms to real-world robotics, focusing on sim-to-real transfer.">
+    <meta name="keywords" content="reinforcement learning, robotics, sim-to-real, transfer learning, AI research">
+    <meta name="author" content="Adam Oentoro">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Reinforcement Learning in Robotics: Bridging Simulation and Reality | Adam Oentoro">
+    <meta property="og:description" content="Exploring the challenges and solutions in applying reinforcement learning algorithms to real-world robotics, focusing on sim-to-real transfer.">
+    <meta property="og:url" content="https://crunchdomo.github.io/blog/2024/10/20/reinforcement-learning-robotics/">
+    <meta property="og:site_name" content="Adam Oentoro">
+    <meta property="og:type" content="article">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Reinforcement Learning in Robotics: Bridging Simulation and Reality | Adam Oentoro">
+    <meta name="twitter:description" content="Exploring the challenges and solutions in applying reinforcement learning algorithms to real-world robotics, focusing on sim-to-real transfer.">
+    
+    <!-- Page Title -->
+    <title>Reinforcement Learning in Robotics: Bridging Simulation and Reality | Adam Oentoro</title>
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <link rel="stylesheet" href="/assets/css/blog.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    
+    <!-- Jekyll Plugins -->
+    <link type="application/atom+xml" rel="alternate" href="https://crunchdomo.github.io/feed.xml" title="Adam Oentoro" />
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Reinforcement Learning in Robotics: Bridging Simulation and Reality | Adam Oentoro</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Reinforcement Learning in Robotics: Bridging Simulation and Reality" />
+<meta name="author" content="Adam Oentoro" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Exploring the challenges and solutions in applying reinforcement learning algorithms to real-world robotics, focusing on sim-to-real transfer." />
+<meta property="og:description" content="Exploring the challenges and solutions in applying reinforcement learning algorithms to real-world robotics, focusing on sim-to-real transfer." />
+<link rel="canonical" href="https://crunchdomo.github.io/blog/2024/10/20/reinforcement-learning-robotics/" />
+<meta property="og:url" content="https://crunchdomo.github.io/blog/2024/10/20/reinforcement-learning-robotics/" />
+<meta property="og:site_name" content="Adam Oentoro" />
+<meta property="og:image" content="https://crunchdomo.github.io/assets/images/rl-robotics.jpg" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2024-10-20T00:00:00+02:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://crunchdomo.github.io/assets/images/rl-robotics.jpg" />
+<meta property="twitter:title" content="Reinforcement Learning in Robotics: Bridging Simulation and Reality" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Adam Oentoro"},"dateModified":"2024-10-20T00:00:00+02:00","datePublished":"2024-10-20T00:00:00+02:00","description":"Exploring the challenges and solutions in applying reinforcement learning algorithms to real-world robotics, focusing on sim-to-real transfer.","headline":"Reinforcement Learning in Robotics: Bridging Simulation and Reality","image":"https://crunchdomo.github.io/assets/images/rl-robotics.jpg","mainEntityOfPage":{"@type":"WebPage","@id":"https://crunchdomo.github.io/blog/2024/10/20/reinforcement-learning-robotics/"},"url":"https://crunchdomo.github.io/blog/2024/10/20/reinforcement-learning-robotics/"}</script>
+<!-- End Jekyll SEO tag -->
+
+    
+    <!-- Schema.org structured data for posts -->
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Reinforcement Learning in Robotics: Bridging Simulation and Reality",
+        "description": "How do we bridge the gap between reinforcement learning in simulation and real-world robotics? This post explores current approaches and emerging solutions.",
+        "author": {
+            "@type": "Person",
+            "name": "Adam Oentoro"
+        },
+        "datePublished": "2024-10-20T00:00:00+02:00",
+        "url": "https://crunchdomo.github.io/blog/2024/10/20/reinforcement-learning-robotics/",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://crunchdomo.github.io/blog/2024/10/20/reinforcement-learning-robotics/"
+        }
+    }
+    </script>
+    
+</head>
+<body>
+    <!-- Navigation -->
+<nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="nav-container">
+        <a href="/" class="nav-logo" aria-label="Adam Oentoro home">
+            AO
+        </a>
+        
+        <ul class="nav-menu" id="nav-menu">
+            
+            
+            
+            
+                
+                <li class="nav-item">
+                    
+                    
+                    
+                    
+                    
+                    
+                    <a href="/#home" 
+                       class="nav-link"
+                       >
+                        Home
+                        
+                    </a>
+                </li>
+            
+                
+                <li class="nav-item">
+                    
+                    
+                    
+                    
+                    
+                    
+                    <a href="/#about" 
+                       class="nav-link"
+                       >
+                        About
+                        
+                    </a>
+                </li>
+            
+                
+                <li class="nav-item">
+                    
+                    
+                    
+                    
+                    
+                    
+                    <a href="/#projects" 
+                       class="nav-link"
+                       >
+                        Projects
+                        
+                    </a>
+                </li>
+            
+                
+                <li class="nav-item">
+                    
+                    
+                    
+                    
+                    
+                    
+                    <a href="/#experience" 
+                       class="nav-link"
+                       >
+                        Experience
+                        
+                    </a>
+                </li>
+            
+                
+                <li class="nav-item">
+                    
+                    
+                    
+                    
+                    
+                    
+                    <a href="/blog" 
+                       class="nav-link active"
+                       aria-describedby="blog-posts-count">
+                        Blog
+                        
+                            <span class="nav-badge" id="blog-posts-count">3</span>
+                        
+                    </a>
+                </li>
+            
+                
+                <li class="nav-item">
+                    
+                    
+                    
+                    
+                    
+                    
+                    <a href="/#contact" 
+                       class="nav-link"
+                       >
+                        Contact
+                        
+                    </a>
+                </li>
+            
+            
+            <!-- RSS Feed Link -->
+            <li class="nav-item nav-rss">
+                <a href="/feed.xml" class="nav-link" aria-label="RSS Feed" title="Subscribe to RSS">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M6.503 20.752c0 1.794-1.456 3.248-3.251 3.248-1.796 0-3.252-1.454-3.252-3.248 0-1.794 1.456-3.248 3.252-3.248 1.795.001 3.251 1.454 3.251 3.248zm-6.503-12.572v4.811c6.05.062 10.96 4.966 11.022 11.009h4.817c-.062-8.71-7.118-15.758-15.839-15.82zm0-3.368c10.58.046 19.152 8.594 19.183 19.188h4.817c-.03-13.231-10.755-23.954-24-24v4.812z"/>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+        
+        <button class="hamburger" id="hamburger" aria-label="toggle navigation" aria-expanded="false">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+    </div>
+</nav>
+
+<script>
+// Mobile menu toggle
+document.addEventListener('DOMContentLoaded', function() {
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('nav-menu');
+    
+    if (hamburger && navMenu) {
+        hamburger.addEventListener('click', function() {
+            const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
+            hamburger.setAttribute('aria-expanded', !isExpanded);
+            navMenu.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        });
+        
+        // Close menu when clicking on nav links
+        navMenu.addEventListener('click', function(e) {
+            if (e.target.classList.contains('nav-link')) {
+                navMenu.classList.remove('active');
+                hamburger.classList.remove('active');
+                hamburger.setAttribute('aria-expanded', 'false');
+            }
+        });
+    }
+});
+</script>
+    
+    <article class="post">
+    <div class="container">
+        <div class="post-header">
+            <h1 class="post-title">Reinforcement Learning in Robotics: Bridging Simulation and Reality</h1>
+            <div class="post-meta">
+                <span>October 20, 2024</span>
+                
+                <span>by Adam Oentoro</span>
+                
+                
+                <span>in Research, Robotics</span>
+                
+            </div>
+        </div>
+        
+        <div class="post-content">
+            <p>One of the most exciting frontiers in AI research is the application of reinforcement learning (RL) to robotics. However, the journey from simulated success to real-world deployment presents unique challenges that continue to drive innovation in our field.</p>
+
+<h2 id="the-simulation-reality-gap">The Simulation-Reality Gap</h2>
+
+<h3 id="why-simulation-matters">Why Simulation Matters</h3>
+
+<p>Training robots directly in the real world is often:</p>
+<ul>
+  <li><strong>Expensive</strong>: Physical robots and environments are costly</li>
+  <li><strong>Time-consuming</strong>: Real-world episodes are much slower than simulation</li>
+  <li><strong>Dangerous</strong>: Learning through trial-and-error can damage equipment or cause safety issues</li>
+  <li><strong>Limited</strong>: Difficult to create diverse training scenarios</li>
+</ul>
+
+<h3 id="the-challenge-of-transfer">The Challenge of Transfer</h3>
+
+<p>Despite sophisticated physics engines, simulated environments inevitably differ from reality:</p>
+
+<ol>
+  <li><strong>Physics Approximations</strong>: Friction, elasticity, and contact dynamics are simplified</li>
+  <li><strong>Sensor Noise</strong>: Real sensors have noise patterns different from simulation</li>
+  <li><strong>Actuator Dynamics</strong>: Motor responses and delays vary from idealized models</li>
+  <li><strong>Environmental Variability</strong>: Real-world conditions are more complex and unpredictable</li>
+</ol>
+
+<h2 id="current-approaches-to-sim-to-real-transfer">Current Approaches to Sim-to-Real Transfer</h2>
+
+<h3 id="1-domain-randomization">1. Domain Randomization</h3>
+
+<p>Randomize simulation parameters during training to improve robustness:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Example: Randomizing physical parameters
+</span><span class="k">class</span> <span class="nc">DomainRandomizer</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">friction_range</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">mass_range</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">)</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">damping_range</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
+    
+    <span class="k">def</span> <span class="nf">randomize_environment</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">env</span><span class="p">):</span>
+        <span class="n">friction</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">*</span><span class="bp">self</span><span class="p">.</span><span class="n">friction_range</span><span class="p">)</span>
+        <span class="n">mass_multiplier</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">*</span><span class="bp">self</span><span class="p">.</span><span class="n">mass_range</span><span class="p">)</span>
+        <span class="n">damping</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">*</span><span class="bp">self</span><span class="p">.</span><span class="n">damping_range</span><span class="p">)</span>
+        
+        <span class="n">env</span><span class="p">.</span><span class="n">set_physics_params</span><span class="p">(</span><span class="n">friction</span><span class="p">,</span> <span class="n">mass_multiplier</span><span class="p">,</span> <span class="n">damping</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="2-progressive-transfer-learning">2. Progressive Transfer Learning</h3>
+
+<p>Start with simplified tasks and gradually increase complexity:</p>
+
+<ol>
+  <li><strong>Stage 1</strong>: Basic movement in simplified simulation</li>
+  <li><strong>Stage 2</strong>: Add realistic physics and sensor noise</li>
+  <li><strong>Stage 3</strong>: Introduce environmental variations</li>
+  <li><strong>Stage 4</strong>: Fine-tune on real robot data</li>
+</ol>
+
+<h3 id="3-adversarial-domain-adaptation">3. Adversarial Domain Adaptation</h3>
+
+<p>Use adversarial training to learn domain-invariant representations:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">DomainAdversarialNetwork</span><span class="p">(</span><span class="n">nn</span><span class="p">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state_dim</span><span class="p">,</span> <span class="n">action_dim</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">().</span><span class="n">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">feature_extractor</span> <span class="o">=</span> <span class="n">nn</span><span class="p">.</span><span class="n">Sequential</span><span class="p">(</span>
+            <span class="n">nn</span><span class="p">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">state_dim</span><span class="p">,</span> <span class="mi">256</span><span class="p">),</span>
+            <span class="n">nn</span><span class="p">.</span><span class="n">ReLU</span><span class="p">(),</span>
+            <span class="n">nn</span><span class="p">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">256</span><span class="p">,</span> <span class="mi">128</span><span class="p">)</span>
+        <span class="p">)</span>
+        
+        <span class="bp">self</span><span class="p">.</span><span class="n">policy_head</span> <span class="o">=</span> <span class="n">nn</span><span class="p">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="n">action_dim</span><span class="p">)</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">domain_classifier</span> <span class="o">=</span> <span class="n">nn</span><span class="p">.</span><span class="n">Sequential</span><span class="p">(</span>
+            <span class="n">nn</span><span class="p">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">64</span><span class="p">),</span>
+            <span class="n">nn</span><span class="p">.</span><span class="n">ReLU</span><span class="p">(),</span>
+            <span class="n">nn</span><span class="p">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>  <span class="c1"># sim vs real
+</span>        <span class="p">)</span>
+    
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
+        <span class="n">features</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">feature_extractor</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+        <span class="n">policy</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">policy_head</span><span class="p">(</span><span class="n">features</span><span class="p">)</span>
+        
+        <span class="c1"># Reverse gradient for adversarial training
+</span>        <span class="n">domain_features</span> <span class="o">=</span> <span class="n">ReverseLayerF</span><span class="p">.</span><span class="nb">apply</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">alpha</span><span class="p">)</span>
+        <span class="n">domain_pred</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">domain_classifier</span><span class="p">(</span><span class="n">domain_features</span><span class="p">)</span>
+        
+        <span class="k">return</span> <span class="n">policy</span><span class="p">,</span> <span class="n">domain_pred</span>
+</code></pre></div></div>
+
+<h2 id="case-study-manipulation-tasks">Case Study: Manipulation Tasks</h2>
+
+<p>In my research on robotic manipulation, I’ve explored several strategies:</p>
+
+<h3 id="task-pick-and-place-with-variable-objects">Task: Pick and Place with Variable Objects</h3>
+
+<p><strong>Simulation Setup:</strong></p>
+<ul>
+  <li>Diverse object shapes, weights, and materials</li>
+  <li>Varying lighting conditions</li>
+  <li>Random starting positions and orientations</li>
+</ul>
+
+<p><strong>Transfer Strategy:</strong></p>
+<ol>
+  <li><strong>Curriculum Learning</strong>: Start with regular shapes, progress to complex objects</li>
+  <li><strong>Multi-task Learning</strong>: Train on grasping, lifting, and placing simultaneously</li>
+  <li><strong>Behavioral Cloning</strong>: Initialize with expert demonstrations</li>
+  <li><strong>Online Adaptation</strong>: Continue learning during real-world deployment</li>
+</ol>
+
+<h3 id="results-and-insights">Results and Insights</h3>
+
+<p>After 2M simulation episodes and 500 real-world trials:</p>
+<ul>
+  <li><strong>Success Rate</strong>: 78% on novel objects (vs. 45% baseline)</li>
+  <li><strong>Adaptation Time</strong>: 50 real episodes to reach stable performance</li>
+  <li><strong>Key Factor</strong>: Object material properties had the largest sim-to-real gap</li>
+</ul>
+
+<h2 id="emerging-approaches">Emerging Approaches</h2>
+
+<h3 id="1-digital-twins">1. Digital Twins</h3>
+
+<p>Create high-fidelity digital replicas of physical systems:</p>
+<ul>
+  <li>Use CAD models and material specifications</li>
+  <li>Calibrate physics parameters from real-world data</li>
+  <li>Continuously update models based on real-world observations</li>
+</ul>
+
+<h3 id="2-meta-learning-for-rapid-adaptation">2. Meta-Learning for Rapid Adaptation</h3>
+
+<p>Train algorithms to quickly adapt to new environments:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">MAML_RL</span><span class="p">(</span><span class="n">nn</span><span class="p">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">policy_network</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">policy</span> <span class="o">=</span> <span class="n">policy_network</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">meta_lr</span> <span class="o">=</span> <span class="mf">0.001</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">adaptation_lr</span> <span class="o">=</span> <span class="mf">0.01</span>
+    
+    <span class="k">def</span> <span class="nf">adapt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">support_trajectories</span><span class="p">):</span>
+        <span class="c1"># Fast adaptation using gradient descent
+</span>        <span class="n">adapted_params</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">policy</span><span class="p">.</span><span class="n">parameters</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">trajectory</span> <span class="ow">in</span> <span class="n">support_trajectories</span><span class="p">:</span>
+            <span class="n">loss</span> <span class="o">=</span> <span class="n">compute_policy_loss</span><span class="p">(</span><span class="n">trajectory</span><span class="p">,</span> <span class="n">adapted_params</span><span class="p">)</span>
+            <span class="n">adapted_params</span> <span class="o">=</span> <span class="n">gradient_update</span><span class="p">(</span><span class="n">adapted_params</span><span class="p">,</span> <span class="n">loss</span><span class="p">,</span> <span class="bp">self</span><span class="p">.</span><span class="n">adaptation_lr</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">adapted_params</span>
+</code></pre></div></div>
+
+<h3 id="3-physics-informed-neural-networks">3. Physics-Informed Neural Networks</h3>
+
+<p>Incorporate physical laws directly into neural network architectures:</p>
+<ul>
+  <li>Conservation of energy and momentum</li>
+  <li>Kinematic constraints</li>
+  <li>Dynamics equations</li>
+</ul>
+
+<h2 id="practical-recommendations">Practical Recommendations</h2>
+
+<p>Based on my experience, here’s a systematic approach to sim-to-real transfer:</p>
+
+<h3 id="pre-transfer-phase">Pre-Transfer Phase</h3>
+<ol>
+  <li><strong>Extensive Simulation</strong>: Train for robustness, not just performance</li>
+  <li><strong>Domain Randomization</strong>: Be aggressive with parameter variations</li>
+  <li><strong>Multi-environment Training</strong>: Use multiple physics engines if possible</li>
+</ol>
+
+<h3 id="transfer-phase">Transfer Phase</h3>
+<ol>
+  <li><strong>Start Simple</strong>: Test basic behaviors first</li>
+  <li><strong>Collect Real Data</strong>: Even small amounts of real-world data help significantly</li>
+  <li><strong>Monitor Performance</strong>: Use online metrics to detect domain shift</li>
+</ol>
+
+<h3 id="post-transfer-phase">Post-Transfer Phase</h3>
+<ol>
+  <li><strong>Continuous Learning</strong>: Keep adapting to environmental changes</li>
+  <li><strong>Safety Monitoring</strong>: Maintain bounds on acceptable behavior</li>
+  <li><strong>Regular Recalibration</strong>: Update simulation parameters based on real-world observations</li>
+</ol>
+
+<h2 id="future-directions">Future Directions</h2>
+
+<p>The field is rapidly evolving toward:</p>
+<ul>
+  <li><strong>Foundation Models</strong>: Large pretrained models for robotics</li>
+  <li><strong>Sim-to-Real-to-Sim</strong>: Using real-world data to improve simulations</li>
+  <li><strong>Differentiable Physics</strong>: End-to-end learning through physics engines</li>
+  <li><strong>Embodied AI</strong>: Integration with large language models for instruction following</li>
+</ul>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>While the sim-to-real gap remains a significant challenge, recent advances in domain adaptation, meta-learning, and physics simulation are making real-world deployment of RL-trained robots increasingly viable.</p>
+
+<p>The key is not to eliminate the gap entirely, but to develop algorithms robust enough to handle the inevitable differences between simulation and reality.</p>
+
+<p><em>What’s your experience with sim-to-real transfer? Have you encountered specific challenges or discovered effective techniques? Share your thoughts in the comments!</em></p>
+
+<hr />
+
+<p><em>Next week, I’ll be diving into the integration of large language models with robotic control systems. Stay tuned!</em></p>
+
+        </div>
+        
+        <div class="post-footer">
+            <a href="/blog" class="btn btn-outline">← Back to Blog</a>
+        </div>
+    </div>
+</article>
+    
+    <!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <p>&copy; 2025 Adam Oentoro. All rights reserved.</p>
+    </div>
+</footer>
+    
+    <script src="/assets/js/script.js"></script>
+</body>
+</html>

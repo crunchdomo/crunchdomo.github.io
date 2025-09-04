@@ -1,0 +1,78 @@
+<!-- Navigation -->
+<nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="nav-container">
+        <a href="{{ '/' | relative_url }}" class="nav-logo" aria-label="{{ site.title }} home">
+            AO
+        </a>
+        
+        <ul class="nav-menu" id="nav-menu">
+            {% assign nav_items = "Home,About,Projects,Experience,Blog,Contact" | split: "," %}
+            {% assign nav_links = "/#home,/#about,/#projects,/#experience,/blog,/#contact" | split: "," %}
+            
+            {% for item in nav_items %}
+                {% assign index = forloop.index0 %}
+                <li class="nav-item">
+                    {% assign link = nav_links[index] %}
+                    {% assign current_page = false %}
+                    
+                    {% comment %} Check if current page matches navigation item {% endcomment %}
+                    {% if item == "Blog" and page.url contains "/blog" %}
+                        {% assign current_page = true %}
+                    {% elsif item == "Home" and page.url == "/" %}
+                        {% assign current_page = true %}
+                    {% endif %}
+                    
+                    <a href="{{ link | relative_url }}" 
+                       class="nav-link{% if current_page %} active{% endif %}"
+                       {% if item == "Blog" %}aria-describedby="blog-posts-count"{% endif %}>
+                        {{ item }}
+                        {% if item == "Blog" and site.posts.size > 0 %}
+                            <span class="nav-badge" id="blog-posts-count">{{ site.posts.size }}</span>
+                        {% endif %}
+                    </a>
+                </li>
+            {% endfor %}
+            
+            <!-- RSS Feed Link -->
+            <li class="nav-item nav-rss">
+                <a href="{{ '/feed.xml' | relative_url }}" class="nav-link" aria-label="RSS Feed" title="Subscribe to RSS">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M6.503 20.752c0 1.794-1.456 3.248-3.251 3.248-1.796 0-3.252-1.454-3.252-3.248 0-1.794 1.456-3.248 3.252-3.248 1.795.001 3.251 1.454 3.251 3.248zm-6.503-12.572v4.811c6.05.062 10.96 4.966 11.022 11.009h4.817c-.062-8.71-7.118-15.758-15.839-15.82zm0-3.368c10.58.046 19.152 8.594 19.183 19.188h4.817c-.03-13.231-10.755-23.954-24-24v4.812z"/>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+        
+        <button class="hamburger" id="hamburger" aria-label="toggle navigation" aria-expanded="false">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+    </div>
+</nav>
+
+<script>
+// Mobile menu toggle
+document.addEventListener('DOMContentLoaded', function() {
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('nav-menu');
+    
+    if (hamburger && navMenu) {
+        hamburger.addEventListener('click', function() {
+            const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
+            hamburger.setAttribute('aria-expanded', !isExpanded);
+            navMenu.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        });
+        
+        // Close menu when clicking on nav links
+        navMenu.addEventListener('click', function(e) {
+            if (e.target.classList.contains('nav-link')) {
+                navMenu.classList.remove('active');
+                hamburger.classList.remove('active');
+                hamburger.setAttribute('aria-expanded', 'false');
+            }
+        });
+    }
+});
+</script>

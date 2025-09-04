@@ -1,0 +1,43 @@
+<!-- Reusable post card component -->
+<article class="post-card">
+    <div class="post-card-header">
+        <time class="post-date" datetime="{{ include.post.date | date_to_xmlschema }}">
+            {{ include.post.date | date: "%B %d, %Y" }}
+        </time>
+        {% if include.post.categories.size > 0 %}
+        <span class="post-category">{{ include.post.categories | first | capitalize }}</span>
+        {% endif %}
+        {% if include.post.tags.size > 0 %}
+        <div class="post-tags">
+            {% for tag in include.post.tags limit:3 %}
+            <span class="tag">{{ tag }}</span>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+    
+    <h3 class="post-title">
+        <a href="{{ include.post.url | relative_url }}" title="{{ include.post.title }}">
+            {{ include.post.title }}
+        </a>
+    </h3>
+    
+    <p class="post-excerpt">
+        {{ include.post.excerpt | strip_html | truncate: 150 }}
+    </p>
+    
+    <div class="post-footer">
+        <a href="{{ include.post.url | relative_url }}" class="read-more" aria-label="Read {{ include.post.title }}">
+            Read more →
+        </a>
+        
+        <div class="post-stats">
+            {% assign words = include.post.content | number_of_words %}
+            {% assign reading_time = words | divided_by: 200 %}
+            {% if reading_time < 1 %}
+                {% assign reading_time = 1 %}
+            {% endif %}
+            <span class="reading-time">{{ reading_time }} min read</span>
+        </div>
+    </div>
+</article>
