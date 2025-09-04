@@ -21,8 +21,8 @@ paginate: true
                 <span class="stat">{{ categories.size }} Categories</span>
                 {% assign total_words = 0 %}
                 {% for post in site.posts %}
-                    {% assign post_words = post.content | number_of_words %}
-                    {% assign total_words = total_words | plus: post_words %}
+                    {% assign post_word_count = post.content | number_of_words %}
+                    {% assign total_words = total_words | plus: post_word_count %}
                 {% endfor %}
                 <span class="stat">~{{ total_words | divided_by: 1000 }}k Words</span>
             </div>

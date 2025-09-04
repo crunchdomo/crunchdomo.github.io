@@ -21,7 +21,8 @@ layout: default
                 <span class="stat">{{ category_posts.size }} Posts</span>
                 {% assign category_words = 0 %}
                 {% for post in category_posts %}
-                    {% assign category_words = category_words | plus: post.content | number_of_words %}
+                    {% assign post_word_count = post.content | number_of_words %}
+                    {% assign category_words = category_words | plus: post_word_count %}
                 {% endfor %}
                 <span class="stat">~{{ category_words | divided_by: 1000 }}k Words</span>
             </div>
