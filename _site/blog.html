@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="preload">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,6 +23,21 @@
     
     <!-- Page Title -->
     <title>Blog | Adam Oentoro</title>
+    
+    <!-- Critical CSS for FOUC Prevention -->
+    <style>
+        html.preload .greeting,
+        html.preload .name,
+        html.preload .hero-subtitle,
+        html.preload .hero-buttons,
+        html.preload .stat-card {
+            opacity: 0 !important;
+            visibility: hidden !important;
+        }
+        .greeting, .name, .hero-subtitle, .hero-buttons, .stat-card {
+            opacity: 0;
+        }
+    </style>
     
     <!-- Stylesheets -->
     <link rel="stylesheet" href="/assets/css/styles.css">

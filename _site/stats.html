@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="preload">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,6 +23,21 @@
     
     <!-- Page Title -->
     <title>Site Statistics | Adam Oentoro | Adam Oentoro</title>
+    
+    <!-- Critical CSS for FOUC Prevention -->
+    <style>
+        html.preload .greeting,
+        html.preload .name,
+        html.preload .hero-subtitle,
+        html.preload .hero-buttons,
+        html.preload .stat-card {
+            opacity: 0 !important;
+            visibility: hidden !important;
+        }
+        .greeting, .name, .hero-subtitle, .hero-buttons, .stat-card {
+            opacity: 0;
+        }
+    </style>
     
     <!-- Stylesheets -->
     <link rel="stylesheet" href="/assets/css/styles.css">
@@ -454,7 +469,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <strong>Site Generator:</strong> Jekyll 3.10.0
                 </div>
                 <div class="tech-item">
-                    <strong>Build Date:</strong> September 04, 2025 at 03:49 PM
+                    <strong>Build Date:</strong> September 04, 2025 at 04:04 PM
                 </div>
                 <div class="tech-item">
                     <strong>Total Pages:</strong> 9
@@ -977,6 +992,19 @@ document.addEventListener('DOMContentLoaded', function() {
     transition: opacity 0.2s ease;
 }
 
+/* FOUC Prevention for Stats Page - More aggressive approach */
+html.preload .stat-card {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transform: translateY(30px) !important;
+}
+
+/* Fallback for very slow loading */
+.stat-card {
+    opacity: 0;
+    transform: translateY(30px);
+}
+
 /* Animations */
 @keyframes countUp {
     from { opacity: 0; transform: translateY(20px); }
@@ -985,6 +1013,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
 .stat-card {
     animation: countUp 0.6s ease forwards;
+}
+
+/* Override fallback styles when animations start */
+html:not(.preload) .stat-card {
+    opacity: 0;
+    transform: translateY(20px);
 }
 
 .stat-card:nth-child(1) { animation-delay: 0.1s; }

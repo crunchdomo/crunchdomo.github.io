@@ -705,6 +705,19 @@ description: "Live statistics and metrics for Adam Oentoro's portfolio website a
     transition: opacity 0.2s ease;
 }
 
+/* FOUC Prevention for Stats Page - More aggressive approach */
+html.preload .stat-card {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transform: translateY(30px) !important;
+}
+
+/* Fallback for very slow loading */
+.stat-card {
+    opacity: 0;
+    transform: translateY(30px);
+}
+
 /* Animations */
 @keyframes countUp {
     from { opacity: 0; transform: translateY(20px); }
@@ -713,6 +726,12 @@ description: "Live statistics and metrics for Adam Oentoro's portfolio website a
 
 .stat-card {
     animation: countUp 0.6s ease forwards;
+}
+
+/* Override fallback styles when animations start */
+html:not(.preload) .stat-card {
+    opacity: 0;
+    transform: translateY(20px);
 }
 
 .stat-card:nth-child(1) { animation-delay: 0.1s; }

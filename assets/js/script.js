@@ -72,6 +72,12 @@ const observer = new IntersectionObserver((entries) => {
 
 // Apply fade-in animation to sections
 document.addEventListener('DOMContentLoaded', () => {
+    // Wait for CSS and fonts to load before starting animations
+    window.addEventListener('load', () => {
+        setTimeout(() => {
+            document.documentElement.classList.remove('preload');
+        }, 50);
+    });
     const sections = document.querySelectorAll('.about, .projects, .contact');
     sections.forEach(section => {
         section.style.opacity = '0';
@@ -120,24 +126,27 @@ window.addEventListener('scroll', () => {
     });
 });
 
-// Typing Effect for Hero Title (optional enhancement)
+// Coordinated Typing Effect for Hero Title
 const heroTitle = document.querySelector('.name');
 if (heroTitle) {
     const text = heroTitle.textContent;
     heroTitle.textContent = '';
-    heroTitle.style.opacity = '1';
     
     let charIndex = 0;
     const typeWriter = () => {
         if (charIndex < text.length) {
             heroTitle.textContent += text.charAt(charIndex);
             charIndex++;
-            setTimeout(typeWriter, 100);
+            setTimeout(typeWriter, 80);
         }
     };
     
-    // Start typing after a short delay
-    setTimeout(typeWriter, 500);
+    // Start typing after greeting animation completes (0.3s + 0.5s buffer = 0.8s)
+    setTimeout(() => {
+        heroTitle.style.opacity = '1';
+        heroTitle.style.transition = 'opacity 0.3s ease';
+        typeWriter();
+    }, 800);
 }
 
 // Add parallax effect to hero decoration

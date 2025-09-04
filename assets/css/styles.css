@@ -1,3 +1,30 @@
+/* FOUC Prevention - More aggressive approach */
+html.preload .greeting,
+html.preload .name,
+html.preload .hero-subtitle,
+html.preload .hero-buttons {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transform: translateY(30px) !important;
+}
+
+/* Fallback for very slow loading */
+.greeting,
+.name,
+.hero-subtitle,
+.hero-buttons {
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+/* Override fallback styles when animations start */
+html:not(.preload) .greeting,
+html:not(.preload) .hero-subtitle,
+html:not(.preload) .hero-buttons {
+    opacity: 0;
+    transform: translateY(30px);
+}
+
 /* CSS Reset and Variables */
 :root {
     --primary-color: #1a1a2e;
@@ -160,7 +187,6 @@ body {
     display: block;
     font-family: 'Playfair Display', serif;
     opacity: 0;
-    animation: fadeInUp 1.2s ease 0.8s forwards;
     background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
